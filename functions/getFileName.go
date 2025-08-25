@@ -1,4 +1,4 @@
-package Ascii
+package AsciiArt
 
 func GetFileName(banner string) string {
 	if banner == "standard" || banner == "standard.txt" {

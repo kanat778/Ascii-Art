@@ -1,4 +1,4 @@
-package Ascii
+package AsciiArt
 
 func WordSplit(s string) []string {
 	slice := []string{}

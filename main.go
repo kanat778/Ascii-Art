@@ -1,8 +1,7 @@
 package main
 
 import (
-	Ascii "Ascii/functions"
-	//"Ascii/functions"
+	AsciiArt "AsciiArt/functions"
 	"fmt"
 	"os"
 	"strings"
@@ -23,14 +22,18 @@ func main() {
 		}
 	}
 	bannerName := "standard.txt"
+	if !AsciiArt.CheckFileHashing(bannerName) {
+		fmt.Println("ERROR!: the file was changed!")
+		return
+	}
+
 	//inputFile := Ascii.GetFileName(bannerName)
 
 	bytes, _ := os.ReadFile(bannerName)
 
 	strarr := strings.Split(string(bytes), "\n")
 
-	wordSplit := Ascii.WordSplit(args[0])
-	//fmt.Println(wordSplit)
+	wordSplit := AsciiArt.WordSplit(args[0])
 	storeInMap := make(map[rune]int)
 
 	ind := 1
