@@ -1,6 +1,7 @@
 package main
 
 import (
+	Ascii "Ascii/functions"
 	//"Ascii/functions"
 	"fmt"
 	"os"
@@ -9,7 +10,6 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	fmt.Println(args)
 
 	if len(args) != 1 {
 		fmt.Println("Please enter only one argument")
@@ -28,5 +28,24 @@ func main() {
 	bytes, _ := os.ReadFile(bannerName)
 
 	strarr := strings.Split(string(bytes), "\n")
-	fmt.Println(strarr)
+
+	wordSplit := Ascii.WordSplit(args[0])
+	fmt.Println(wordSplit)
+	storeInMap := make(map[rune]int)
+
+	ind := 1
+	for i := ' '; i <= '~'; i++ {
+		storeInMap[i] = ind
+		ind += 9
+	}
+
+	for i := 0; i < 8; i++ {
+		for _, v := range args[0] {
+			fmt.Printf(strarr[storeInMap[v]+i])
+		}
+		if i != 7 {
+			fmt.Println()
+		}
+	}
+	fmt.Println()
 }
