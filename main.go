@@ -30,7 +30,7 @@ func main() {
 	strarr := strings.Split(string(bytes), "\n")
 
 	wordSplit := Ascii.WordSplit(args[0])
-	fmt.Println(wordSplit)
+	//fmt.Println(wordSplit)
 	storeInMap := make(map[rune]int)
 
 	ind := 1
@@ -39,13 +39,23 @@ func main() {
 		ind += 9
 	}
 
-	for i := 0; i < 8; i++ {
-		for _, v := range args[0] {
-			fmt.Printf(strarr[storeInMap[v]+i])
-		}
-		if i != 7 {
+	for _, word := range wordSplit {
+		if word == "\n" {
 			fmt.Println()
+		} else {
+			for i := 0; i < 8; i++ {
+				for _, v := range word {
+					fmt.Printf(strarr[storeInMap[v]+i])
+				}
+				if i != 7 {
+					fmt.Println()
+				}
+			}
 		}
 	}
-	fmt.Println()
+	if wordSplit[len(wordSplit)-1] == "\n" {
+		fmt.Println()
+	} else {
+		fmt.Println()
+	}
 }
